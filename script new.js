@@ -3,7 +3,7 @@
 ===================================================== */
 function checkLogin() {
   if (sessionStorage.getItem("admin") !== "true") {
-    window.location.replace("login.html");
+    window.location.replace("index.html");
   }
 }
 
