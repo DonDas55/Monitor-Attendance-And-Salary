@@ -95,8 +95,9 @@ color:#94a3b8;
 
 <h2>Admin Login</h2>
 
-<input type="text" id="userId" autocomplete="off" placeholder="User ID">
-  <input type="password" id="password" autocomplete="new-password" placeholder="Password">
+<input type="text" id="user" placeholder="Username">
+
+<input type="password" id="pass" placeholder="Password">
 
 <button onclick="login()">Login</button>
 
@@ -117,7 +118,7 @@ if(username==="admin" && password==="1234"){
 
 sessionStorage.setItem("admin","true")
 
-window.location.href="Home.html"
+window.location.replace="Home.html"
 
 }else{
 
@@ -126,18 +127,7 @@ alert("Wrong Username or Password")
 }
 
 }
-  function clearLoginInputs() {
-    document.getElementById("userId").value = "";
-    document.getElementById("password").value = "";
-  }
-
-  window.onload = clearLoginInputs;
-
-  window.addEventListener("pageshow", function (event) {
-    if (event.persisted) {
-      clearLoginInputs();
-    }
-  });
+ 
 </script>
 
 </body>
