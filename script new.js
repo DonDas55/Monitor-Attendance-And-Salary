@@ -15,12 +15,11 @@ window.addEventListener("pageshow", function (event) {
     checkLogin();
   }
 });
-
 /* =====================================================
    GOOGLE WEBAPP URL (SAME URL FOR BOTH SHEETS)
 ===================================================== */
 const GOOGLE_WEBAPP_URL =
-  "https://script.google.com/macros/s/AKfycby90_UN7kBs4vZFVfTfGg7oAN8a-RwtA1uoSLcDyvkUxhLoXTDCF7-DmVIsP76flA7xJQ/exec;
+  "https://script.google.com/macros/s/AKfycby90_UN7kBs4vZFVfTfGg7oAN8a-RwtA1uoSLcDyvkUxhLoXTDCF7-DmVIsP76flA7xJQ/exec";
 
 /* =====================================================
    WORKER OFF DAY SYSTEM
@@ -895,7 +894,7 @@ async function logout() {
     return;
   }
 
-sessionStorage.removeItem("admin");
+  sessionStorage.removeItem("admin");
   window.location.replace("index.html");
 }
 
