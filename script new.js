@@ -122,45 +122,40 @@ function loadAttendance() {
 /* =====================================================
    RESTORE FROM GOOGLE SHEET (Sheet2)
 ===================================================== */
-function restoreFromGoogleSheet() {
+async function restoreFromGoogleSheet() {
 
-  return new Promise((resolve) => {
+  const workerId = WORKER_ID;
+  const year = currentYear;
+  const month = currentMonth + 1;
 
-    const workerId = WORKER_ID;
-    const year = currentYear;
-    const month = currentMonth + 1;
+  const url =
+    `${GOOGLE_WEBAPP_URL}?action=get&workerId=${workerId}&year=${year}&month=${month}`;
 
-    const callbackName = "jsonpCallback_" + Date.now();
+  try {
 
-    window[callbackName] = function (data) {
+    const res = await fetch(url);
+    const data = await res.json();
 
-      if (!data.found) {
-        resolve(false);
-        return;
-      }
+    if (!data.found) {
+      console.log("No backup found in Google Sheet");
+      return false;
+    }
 
-      attendance = new Set(data.AttendanceDates ? data.AttendanceDates.split(",") : []);
-      normalOT = new Set(data.NormalOTDates ? data.NormalOTDates.split(",") : []);
-      festOT = new Set(data.FestOTDates ? data.FestOTDates.split(",") : []);
+    attendance = new Set(data.AttendanceDates ? data.AttendanceDates.split(",") : []);
+    normalOT = new Set(data.NormalOTDates ? data.NormalOTDates.split(",") : []);
+    festOT = new Set(data.FestOTDates ? data.FestOTDates.split(",") : []);
 
-      saveAttendance();
-      resolve(true);
+    saveAttendance();
 
-      delete window[callbackName];
-    };
+    console.log("Restored from Google Sheet Successfully");
+    return true;
 
-    const script = document.createElement("script");
-
-    script.src =
-      `${GOOGLE_WEBAPP_URL}?action=get&workerId=${workerId}&year=${year}&month=${month}&callback=${callbackName}`;
-
-    script.onerror = function () {
-      resolve(false);
-    };
-
-    document.body.appendChild(script);
-  });
+  } catch (err) {
+    console.error("Restore failed:", err);
+    return false;
+  }
 }
+
 /* =====================================================
    SALARY CALCULATION
 ===================================================== */
