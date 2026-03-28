@@ -1,9 +1,20 @@
 /* =====================================================
    ADMIN CHECK
 ===================================================== */
-if (sessionStorage.getItem("admin") !== "true") {
-  window.location.href = "login.html";
+function checkLogin() {
+  if (sessionStorage.getItem("admin") !== "true") {
+    window.location.replace("login.html");
+  }
 }
+
+checkLogin();
+
+// ✅ block back button cached page
+window.addEventListener("pageshow", function (event) {
+  if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+    checkLogin();
+  }
+});
 
 /* =====================================================
    GOOGLE WEBAPP URL (SAME URL FOR BOTH SHEETS)
@@ -884,8 +895,8 @@ async function logout() {
     return;
   }
 
-  sessionStorage.removeItem("admin");
-  window.location.href = "index.html";
+sessionStorage.removeItem("admin");
+  window.location.replace("index.html");
 }
 
 /* =====================================================
