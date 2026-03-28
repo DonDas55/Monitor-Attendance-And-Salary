@@ -20,7 +20,7 @@ window.addEventListener("pageshow", function (event) {
    GOOGLE WEBAPP URL (SAME URL FOR BOTH SHEETS)
 ===================================================== */
 const GOOGLE_WEBAPP_URL =
-  "https://script.google.com/macros/s/AKfycby90_UN7kBs4vZFVfTfGg7oAN8a-RwtA1uoSLcDyvkUxhLoXTDCF7-DmVIsP76flA7xJQ/exec";
+  "https://script.google.com/macros/s/AKfycby90_UN7kBs4vZFVfTfGg7oAN8a-RwtA1uoSLcDyvkUxhLoXTDCF7-DmVIsP76flA7xJQ/exec;
 
 /* =====================================================
    WORKER OFF DAY SYSTEM
@@ -122,40 +122,45 @@ function loadAttendance() {
 /* =====================================================
    RESTORE FROM GOOGLE SHEET (Sheet2)
 ===================================================== */
-async function restoreFromGoogleSheet() {
+function restoreFromGoogleSheet() {
 
-  const workerId = WORKER_ID;
-  const year = currentYear;
-  const month = currentMonth + 1;
+  return new Promise((resolve) => {
 
-  const url =
-    `${GOOGLE_WEBAPP_URL}?action=get&workerId=${workerId}&year=${year}&month=${month}`;
+    const workerId = WORKER_ID;
+    const year = currentYear;
+    const month = currentMonth + 1;
 
-  try {
+    const callbackName = "jsonpCallback_" + Date.now();
 
-    const res = await fetch(url);
-    const data = await res.json();
+    window[callbackName] = function (data) {
 
-    if (!data.found) {
-      console.log("No backup found in Google Sheet");
-      return false;
-    }
+      if (!data.found) {
+        resolve(false);
+        return;
+      }
 
-    attendance = new Set(data.AttendanceDates ? data.AttendanceDates.split(",") : []);
-    normalOT = new Set(data.NormalOTDates ? data.NormalOTDates.split(",") : []);
-    festOT = new Set(data.FestOTDates ? data.FestOTDates.split(",") : []);
+      attendance = new Set(data.AttendanceDates ? data.AttendanceDates.split(",") : []);
+      normalOT = new Set(data.NormalOTDates ? data.NormalOTDates.split(",") : []);
+      festOT = new Set(data.FestOTDates ? data.FestOTDates.split(",") : []);
 
-    saveAttendance();
+      saveAttendance();
+      resolve(true);
 
-    console.log("Restored from Google Sheet Successfully");
-    return true;
+      delete window[callbackName];
+    };
 
-  } catch (err) {
-    console.error("Restore failed:", err);
-    return false;
-  }
+    const script = document.createElement("script");
+
+    script.src =
+      `${GOOGLE_WEBAPP_URL}?action=get&workerId=${workerId}&year=${year}&month=${month}&callback=${callbackName}`;
+
+    script.onerror = function () {
+      resolve(false);
+    };
+
+    document.body.appendChild(script);
+  });
 }
-
 /* =====================================================
    SALARY CALCULATION
 ===================================================== */
