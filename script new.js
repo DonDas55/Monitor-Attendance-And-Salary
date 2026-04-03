@@ -521,253 +521,203 @@ function getSalarySlipHTML() {
   return `
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Wage Slip</title>
-
-<style>
-body {
-  margin: 0;
-  background: #ccc;
-  font-family: Arial, sans-serif;
-}
-
-/* A4 */
-.page {
-  width: 100%;
-  height: auto;
-  margin: auto;
-  color: #000000;
-  background: #fff;
-  padding: 6mm 10mm;
-  box-sizing: border-box;
-}
-
-/* HEADER */
-.header {
-  text-align: center;
-  font-size: 22px;
-
-  line-height: 1.15;
-  margin-bottom: 2px;
-}
-
-.header b {
-  font-size: 22px;
-
-}
-
-/* INFO */
-.info {
-width: 100%;
-  font-size: 22px;
-  margin-bottom: 2px;
-}
-
-.info-line {
-  display: flex;
-  align-items: center;
-}
-
-.info-line div {
-  margin-right: 20px;
-}
-
-/* MAIN */
-.row {
-  display: flex;
-  align-items: flex-start;
-}
-
-/* LEFT */
-.left {
-  width: 70%;
-}
-
-/* RIGHT */
-.right {
-  width: 35%;
-  padding-left: 5px;
-}
-
-/* TABLE */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 22px;
-}
-
-table, th, td {
-  border: 0.7px solid #000;
-}
-
-th, td {
-  padding: 2px 3px;
-  height: 10px;
-  vertical-align: middle;
-}
-
-/* TOP TABLE */
-.top-table th {
-  text-align: center;
-  font-weight: bold;
-  line-height: 1.1;
-}
-
-/* MAIN TABLE */
-.main-table th {
-  text-align: center;
-}
-
-/* BASIC BOX */
-.basic {
-
-  margin-top: 0;
-}
-
-.basic th {
-  text-align: center;
-  font-size: 22px;
-}
-
-/* NOTE */
-.note {
-  font-size: 22px;
-  margin-top: 2px;
-}
-
-/* SIGNATURE */
-.signature {
-  margin-top: 500px;
-  text-align: center;
-  font-size: 18px;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
 </head>
 
 <body>
+    <div class="page">
+        <div class="header">
+            <b><u>WAGES SLIP</u></b><br>
+            FORM-XIX [See Rule 78(1)(b)]<BR>
+            WAGES SLIP FOR THE MONTH OF <b>${monthText}</b><BR>
+            Industrial Enterprise<br>
+            Durgachak,Haldia,Purba Midnipur,721602<br>
+            (Chloride Metals Ltd Site)
+        </div>
+        <div class="info">
+            <TABLE class="FAST_TABLE">
+                <TR>
+                    <TD style="width: 27%;">WORKMAN NAME:-</TD>
+                    <TD style="font-weight: bold;">${workerName}</TD>
 
-<div class="page">
+                </TR>
+                <TR>
+                    <TD>DESIGNATION:-</TD>
+                    <TD style="font-weight: bold;">Semi-Skilled</TD>
+                    <TD>SERIAL NO:-</TD>
+                    <TD style="width: 27%; font-weight: bold;">${0 + Number(WORKER_ID)}</TD>
 
-  <!-- HEADER -->
-  <div class="header">
-    <b><u>WAGES SLIP</u></b><br>
-    FORM-XIX [See Rule 78(1)(b)]<br>
-    WAGES SLIP FOR THE MONTH OF <b>${monthText}</b><br>
-    <b>Industrial Enterprise</b><br>
-    Durgachak, Haldia, Purba Medinipur, 721602<br>
-    (Chloride Metals Ltd Site)
-  </div>
+                </TR>
 
-  <!-- INFO -->
-  <div class="info">
-    <div class="info-line">
-      <div>WORKMEN NAME :-</div><div style="margin-left: 30px;"> <b>${workerName}</b></div>
-    </div>
-    <div class="info-line">
-      <div>DESIGNATION :-</div><div style="margin-left: 65px;"> <b>Semi-Skilled</b></div>
-      <div style="margin-left: 250px;">SERIAL NO : <b>${0 + Number(WORKER_ID)}</b></div>
-    </div>
-  </div>
+            </TABLE>
+        </div>
+        <div class="row">
+            <!-- MAIN -->
 
-  <!-- MAIN -->
-  <div class="row">
 
-    <!-- LEFT -->
-    <div class="left">
+            <!-- LEFT -->
+            <div class="left">
+                <table class="SECOND">
+                    <tr>
+                        <td style="width: 25%; text-align: center;"><b>Festival Leave</b></td>
+                        <td style="width: 25%; text-align: center; padding: 5px;"><b>Normal Working Day in This
+                                Month</b></td>
+                        <td style="width: 25%; text-align: center;"><b>Total Overtime(Hours)</b></td>
+                        <td rowspan="2" style="width: 25%;"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; font-weight: bold;">${qs('festivalDays').value}</td>
+                        <td style="text-align: center; font-weight: bold;">${qs('workDays').value}</td>
+                        <td style="text-align: center; font-weight: bold;">${qs('otHours').value}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center; font-weight: bold;">Components</td>
+                        <td style="text-align: center; font-weight: bold">Rate/Day</td>
+                        <td colspan="2" style="text-align: center; font-weight: bold">Amount</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Festival Leave Amount</td>
+                        <td style="text-align: center;">${qs('festivalRate').value}</td>
+                        <td colspan="2" style="text-align: right;">${qs('festival').textContent}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Basic Wages</td>
+                        <td style="text-align: center;">${qs('workRate').value}</td>
+                        <td colspan="2" style="text-align: right;">${qs('basic').textContent}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">HRA Allowance(5% on Basic Wages)</td>
+                        <td colspan="2" style="text-align: right;">${qs('hra').textContent}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Over Time Amount(Rate/Hr)</td>
+                        <td style="text-align: center;">${qs('otRate').value}</td>
+                        <td colspan="2" style="text-align: right;">${qs('overtime').textContent}</td>
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
 
-      <!-- TOP TABLE -->
-      <table class="top-table">
-        <tr>
-          <th style="width:27%">Festival Leave</th>
-          <th style="width:43%">Normal Working Day in this month</th>
-          <th style="width:30%">Total Overtime (Hours)</th>
-        </tr>
-        <tr>
-          <td align="center">${qs('festivalDays').value}</td>
-          <td align="center">${qs('workDays').value}</td>
-          <td align="center">${qs('otHours').value}</td>
-        </tr>
-      </table>
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="font-weight: bold">a) Net Amt. (for PD Contribution)</td>
+                        <td style="text-align: right; font-weight: bold;">₹${(
+                            Number(qs('basic').textContent.replace(/[₹,]/g, '')) +
+                            Number(qs('festival').textContent.replace(/[₹,]/g, ''))).toFixed(2)}</td>
+                    </tr>
+                    <tr>
 
-      <!-- MAIN TABLE -->
-      <table class="main-table">
-        <tr>
-          <th style="width:57%">Components</th>
-          <th style="width:18%">Rate/Day</th>
-          <th style="width:25%">Amount</th>
-        </tr>
+                        <td colspan="3" style="font-weight: bold">b) Net Amt. (for ESIC Contribution) Exclud.WA</td>
+                        <td style="text-align: right; font-weight: bold;"><b>${qs('gross').textContent}</td>
+                    </tr>
+                    <tr>
 
-        <tr><td>1. Festival Leave Amount</td><td >${qs('festivalRate').value}</td><td style="text-align:right;">${qs('festival').textContent}</td></tr>
-        <tr><td>2. Basic Wages</td><td >${qs('workRate').value}</td><td style="text-align:right;">${qs('basic').textContent}</td></tr>
-        <tr><td>3. HRA Allowance (5% on Basic wages)</td><td></td><td style="text-align:right;">${qs('hra').textContent}</td></tr>
-        <tr><td>4. Over Time Amount (Rate/Hr)</td><td>${qs('otRate').value}</td><td style="text-align:right;">${qs('overtime').textContent}</td></tr>
-        
-        <tr><td>.</td><td>.</td><td>.</td></tr>
-        <tr><td>.</td><td>.</td></tr>
-        <tr><td>.</td><td>.</td><td>.</td></tr>
-        <tr><td>.</td><td>.</td><td>.</td></tr>
+                        <td colspan="3" style="font-weight: bold">c)Gross Wages</td>
+                        <td style="text-align: right; font-weight: bold;"><b>${qs('gross').textContent}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: center;font-weight: bold"><u>Debuction:-</u></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">1. PF(Net Amt. SI. No. a) x 12% </td>
+                        <td>${qs('epfo').textContent}</td>
+                    </tr>
+                    <tr>
 
-        <tr><td colspan="2"><b>a) Net Amt. (for PF Contribution)</b></td><td style="text-align:right;"><b>₹${(
-      Number(qs('basic').textContent.replace(/[₹,]/g, '')) +
-      Number(qs('festival').textContent.replace(/[₹,]/g, ''))).toFixed(2)}</b></td></tr>
-        <tr><td colspan="2"><b>b) Net Amt. (for ESIC Contribution) Exclud. WA</b></td><td style="text-align:right;"><b>${qs('gross').textContent}</b></td></tr>
-        <tr><td colspan="2"><b>c) Gross Wages</b></td><td style="text-align:right;"><b>${qs('gross').textContent}</b></td></tr>
+                        <td colspan="3">2. ESIC(Net Amt. SI. No. b) x 0.75%</td>
+                        <td>${qs('esic').textContent}</td>
+                    </tr>
+                    <tr>
 
-        <tr><td colspan="3" style="text-align: center;"><b>Deduction:-</b></td></tr>
+                        <td colspan="3">3. Professional Tax </td>
+                        <td style="font-weight: bold;">${qs('taxFixed').value}</td>
+                    </tr>
+                    <tr>
 
-        <tr><td colspan="2">1. PF (Net Amt. Sl. No. a) X 12%</td><td>${qs('epfo').textContent}</td></tr>
-        <tr><td colspan="2">2. ESIC (Net Amt. Sl. No. b) X 0.75%</td><td>${qs('esic').textContent}</td></tr>
-        <tr><td colspan="2">3. Professional Tax</td><td>₹${qs('taxFixed').value}</td></tr>
-
-        <tr><td colspan="2" style="text-align: right;"><b>Total Deduction Amount</b></td><td><b>
-₹${(
+                        <td colspan="3" style="text-align: right;font-weight: bold">Total Debuction Amount </td>
+                        <td style="font-weight: bold;">₹${(
       Number(qs('epfo').textContent.replace(/[₹,]/g, '')) +
       Number(qs('esic').textContent.replace(/[₹,]/g, '')) +
       Number(qs('taxFixed').value)
-    ).toFixed(2)}</b></td></tr>
-        <tr><td colspan="2" style="text-align: right;"><b>Labour Welfare Fund Deduction</b></td><td><b>3.00</b></td></tr>
-        <tr><td colspan="2" style="text-align: right;"><b>Adjust Advance</b></td><td><b>0.00</b></td></tr>
+    ).toFixed(2)}</td>
+                    </tr>
+                    <tr>
 
-        <tr>
-          <td colspan="2" style="text-align: right;"><b>NET AMOUNT PAYABLE</b></td>
-          <td><b>${qs('net').textContent}</b></td>
-        </tr>
+                        <td colspan="3" style="text-align: right;font-weight: bold">Labour Welfare Fund Debuctio
+                        </td>
+                        <td style="font-weight: bold;">0.00</td>
+                    </tr>
+                    <tr>
 
-      </table>
+                        <td colspan="3" style="text-align: right;font-weight: bold">Adjust Advance </td>
+                        <td style="font-weight: bold;">0.00</td>
+                    </tr>
+                    <tr>
 
+                        <td colspan="3" style="text-align: right;font-weight: bold">NET AMOUNT PAYABLE</td>
+                        <td style="font-weight: bold; text-align: center;">Rs${qs('net').textContent}</td>
+                    </tr>
+
+
+                </table>
+            </div>
+            <div class="right">
+                <table class="basic">
+                    <tr>
+                        <td colspan="3">** Details of Basic Wages</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Basic Wages</td>
+                        <td>${qs('workRate').value}</td>
+                    </tr>
+
+
+                </table>
+                <div class="note">
+                    * Rate as per WB Minimum wages
+                </div>
+                <div class="signature">
+                    Initial of Contractor or his representatives<br><br><br><br>
+                    Signature
+                    <img src="${SIGNATURE1}"
+                        style="height:150px; position: absolute; margin-top:-110px; margin-left:-100px;">
+                    <img src="${SIGNATURE}"
+                        style="height:150px; position: absolute; margin-top:-110px; margin-left:-110px;"><br>
+                </div>
+            </div>
+
+
+        </div>
     </div>
-
-    <!-- RIGHT -->
-    <div class="right">
-
-      <table class="basic">
-        <tr><th colspan="2">** Details of Basic Wages</th></tr>
-        <tr>
-          <td>1</td><td>Basic Wages</td>
-          <td>${qs('workRate').value}</td>
-        </tr>
-      </table>
-
-      <div class="note">
-        * Rate as per WB Minimum wages
-      </div>
-
-      <div class="signature">
-       Initial of Contractor or his representatives<br><br><br><br>
-        Signature
-        <img src="${SIGNATURE1}" style="height:150px; position: absolute; margin-top:-110px; margin-left:-100px;">
-        <img src="${SIGNATURE}" style="height:150px; position: absolute; margin-top:-110px; margin-left:-110px;"><br>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
 </body>
+</script>
+
 </html>
 `;
 }
