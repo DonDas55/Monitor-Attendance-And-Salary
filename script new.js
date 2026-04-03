@@ -546,14 +546,14 @@ function getSalarySlipHTML() {
 
 .header {
     text-align: center;
-    font-size: 18px;
+    font-size: 18.5px;
     line-height: 1.15;
     margin-bottom: 2px;
 }
 
 .info {
     width: 100%;
-    font-size: 18px;
+    font-size: 18.5px;
 }
 
 .row {
@@ -572,7 +572,7 @@ function getSalarySlipHTML() {
 }
 
 table {
-    font-size: 18px;
+    font-size: 18.5px;
 }
 
 .FAST_TABLE {
@@ -608,7 +608,7 @@ table {
 
 /* NOTE */
 .note {
-    font-size: 18px;
+    font-size: 18.5px;
     margin-top: 0;
     margin-left: 10px;
 }
@@ -617,7 +617,7 @@ table {
 .signature {
     margin-top: 190px;
     text-align: center;
-    font-size: 20px;
+    font-size: 20.5px;
 }
 
     </style>
@@ -629,7 +629,7 @@ table {
             <b><u>WAGES SLIP</u></b><br>
             FORM-XIX [See Rule 78(1)(b)]<BR>
             WAGES SLIP FOR THE MONTH OF <b>${monthText}</b><BR>
-            Industrial Enterprise<br>
+            <b>Industrial Enterprise</b><br>
             Durgachak,Haldia,Purba Midnipur,721602<br>
             (Chloride Metals Ltd Site)
         </div>
@@ -783,7 +783,7 @@ table {
             <div class="right">
                 <table class="basic">
                     <tr>
-                        <td colspan="3">** Details of Basic Wages</td>
+                        <td colspan="3" style="font-weight: bold;>** Details of Basic Wages</td>
                     </tr>
                     <tr>
                         <td>1</td>
