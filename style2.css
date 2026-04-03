@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    background: #ccc;
+    font-family: Arial, sans-serif;
+}
+
+/* A4 */
+.page {
+    width: 2480;
+    height: 3508;
+    margin: auto;
+    color: #000000;
+    background: #fff;
+    padding: 6mm 10mm;
+    box-sizing: border-box;
+}
+
+.header {
+    text-align: center;
+    font-size: 10px;
+    line-height: 1.15;
+    margin-bottom: 2px;
+}
+
+.info {
+    width: 100%;
+    font-size: 10px;
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* LEFT */
+.left {
+    width: 70%;
+}
+
+/* RIGHT */
+.right {
+    width: 35%;
+}
+
+table {
+    font-size: 10px;
+}
+
+.FAST_TABLE {
+    width: 100%;
+    border: none;  
+}
+.SECOND {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+
+}
+
+.SECOND td {
+    border: 1px solid;
+    text-transform: capitalize;
+
+}
+
+.basic {
+    text-align: center;
+    width: 100%;
+    margin-left: 10px;
+    height: 10px;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.basic td {
+    border: 1px solid black;
+    height: 10px;
+}
+
+/* NOTE */
+.note {
+    font-size: 10px;
+    margin-top: 0;
+    margin-left: 10px;
+}
+
+/* SIGNATURE */
+.signature {
+    margin-top: 190px;
+    text-align: center;
+    font-size: 12px;
+}
