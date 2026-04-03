@@ -783,7 +783,7 @@ table {
             <div class="right">
                 <table class="basic">
                     <tr>
-                        <td colspan="3" style="font-weight: bold;>** Details of Basic Wages</td>
+                        <td colspan="3" style="font-weight: bold;">** Details of Basic Wages</td>
                     </tr>
                     <tr>
                         <td>1</td>
