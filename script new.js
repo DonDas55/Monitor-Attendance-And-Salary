@@ -588,7 +588,6 @@ table {
 
 .SECOND td {
     border: 1px solid;
-    text-transform: capitalize;
 
 }
 
