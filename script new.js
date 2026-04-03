@@ -614,7 +614,7 @@ table {
 
 /* SIGNATURE */
 .signature {
-    margin-top: 330px;
+    margin-top: 350px;
     text-align: center;
     font-size: 20px;
 }
@@ -718,7 +718,7 @@ table {
                         <td>.</td>
                     </tr>
                     <tr>
-                        <td colspan="3" style="font-weight: bold">a) Net Amt. (for PD Contribution)</td>
+                        <td colspan="3" style="font-weight: bold">a) Net Amt. (for PF Contribution)</td>
                         <td style="text-align: right; font-weight: bold;">₹${(
                             Number(qs('basic').textContent.replace(/[₹,]/g, '')) +
                             Number(qs('festival').textContent.replace(/[₹,]/g, ''))).toFixed(2)}</td>
