@@ -615,7 +615,7 @@ table {
 
 /* SIGNATURE */
 .signature {
-    margin-top: 430px;
+    margin-top: -130px;
     text-align: center;
     font-size: 20px;
 }
@@ -675,21 +675,21 @@ table {
                         <td colspan="2" style="text-align: center; font-weight: bold">Amount</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Festival Leave Amount</td>
+                        <td colspan="2">1. Festival Leave Amount</td>
                         <td style="text-align: center;">${qs('festivalRate').value}</td>
                         <td colspan="2" style="text-align: right;">${qs('festival').textContent}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Basic Wages</td>
+                        <td colspan="2">2. Basic Wages</td>
                         <td style="text-align: center;">${qs('workRate').value}</td>
                         <td colspan="2" style="text-align: right;">${qs('basic').textContent}</td>
                     </tr>
                     <tr>
-                        <td colspan="3">HRA Allowance(5% on Basic Wages)</td>
+                        <td colspan="3">3. HRA Allowance(5% on Basic Wages)</td>
                         <td colspan="2" style="text-align: right;">${qs('hra').textContent}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Over Time Amount(Rate/Hr)</td>
+                        <td colspan="2">4. Over Time Amount(Rate/Hr)</td>
                         <td style="text-align: center;">${qs('otRate').value}</td>
                         <td colspan="2" style="text-align: right;">${qs('overtime').textContent}</td>
                     </tr>
