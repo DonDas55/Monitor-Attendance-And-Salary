@@ -546,14 +546,14 @@ function getSalarySlipHTML() {
 
 .header {
     text-align: center;
-    font-size: 18.5px;
+    font-size: 18px;
     line-height: 1.15;
     margin-bottom: 2px;
 }
 
 .info {
     width: 100%;
-    font-size: 18.5px;
+    font-size: 18px;
 }
 
 .row {
@@ -572,7 +572,7 @@ function getSalarySlipHTML() {
 }
 
 table {
-    font-size: 18.5px;
+    font-size: 18px;
 }
 
 .FAST_TABLE {
@@ -608,7 +608,7 @@ table {
 
 /* NOTE */
 .note {
-    font-size: 18.5px;
+    font-size: 18px;
     margin-top: 0;
     margin-left: 10px;
 }
@@ -617,7 +617,7 @@ table {
 .signature {
     margin-top: 190px;
     text-align: center;
-    font-size: 20.5px;
+    font-size: 20px;
 }
 
     </style>
