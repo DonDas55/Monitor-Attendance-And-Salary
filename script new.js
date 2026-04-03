@@ -615,7 +615,7 @@ table {
 
 /* SIGNATURE */
 .signature {
-    margin-top: 190px;
+    margin-top: 230px;
     text-align: center;
     font-size: 20px;
 }
