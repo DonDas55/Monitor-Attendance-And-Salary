@@ -58,7 +58,8 @@ let WORKER_ID = 1;
 let today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
-
+const date = new Date(currentYear, currentMonth);
+const monthName = date.toLocaleString("default", { month: "long" });
 /* =====================================================
    HOLIDAY SYSTEM
 ===================================================== */
@@ -349,8 +350,8 @@ async function renderCalendar() {
   const cal = qs("calendarDates");
   cal.innerHTML = "";
 
-  qs("monthYear").textContent = new Date(currentYear, currentMonth)
-    .toLocaleString("default", { month: "long", year: "numeric" });
+  qs("monthYear").textContent = `${monthName}'${currentYear}`;
+
 
   const firstDay = new Date(currentYear, currentMonth, 1).getDay();
   const totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
