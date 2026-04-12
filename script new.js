@@ -742,7 +742,7 @@ table {
                         <td colspan="4" style="text-align: center;font-weight: bold"><u>Debuction:-</u></td>
                     </tr>
                     <tr>
-                        <td colspan="3">1. PF(Net Amt. SI. No. a) x 12% </td>
+                        <td colspan="3">1. PF(<b>Net Amt. SI. No. a</b>) x 12% </td>
                         <td>${qs('epfo').textContent.replace(/[₹,]/g, '')}</td>
                     </tr>
                     <tr>
@@ -758,7 +758,7 @@ table {
                     <tr>
 
                         <td colspan="3" style="text-align: right;font-weight: bold">Total Debuction Amount </td>
-                        <td style="font-weight: bold;">₹${(
+                        <td style="font-weight: bold;">${(
       Number(qs('epfo').textContent.replace(/[₹,]/g, '')) +
       Number(qs('esic').textContent.replace(/[₹,]/g, '')) +
       Number(qs('taxFixed').value)
