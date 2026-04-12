@@ -620,7 +620,7 @@ table {
 
 /* SIGNATURE */
 .signature {
-    margin-top: 350px;
+    margin-top: 400px;
     text-align: center;
     font-size: 20px;
 }
@@ -798,7 +798,7 @@ table {
 
 
                 </table>
-                <div class="note">
+                <div class="note" style="font-size:13px>
                     <i>* Rate as per WB Minimum wages</i>
                 </div>
                 <div class="signature">
