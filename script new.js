@@ -593,6 +593,7 @@ table {
 
 .SECOND td {
     border: 1px solid;
+    padding: 5px;
 
 }
 
@@ -680,12 +681,12 @@ table {
                     </tr>
                     <tr>
                         <td colspan="2">1. Festival Leave Amount</td>
-                        <td style="text-align: center;">${qs('festivalRate').value}</td>
+                        <td style="text-align: center;">${qs('festivalRate').value}.00</td>
                         <td colspan="2" style="text-align: right;">${qs('festival').textContent.replace(/[₹,]/g, '')}</td>
                     </tr>
                     <tr>
                         <td colspan="2">2. Basic Wages</td>
-                        <td style="text-align: center;">${qs('workRate').value}</td>
+                        <td style="text-align: center;">${qs('workRate').value}.00</td>
                         <td colspan="2" style="text-align: right;">${qs('basic').textContent.replace(/[₹,]/g, '')}</td>
                     </tr>
                     <tr>
@@ -730,7 +731,7 @@ table {
                     </tr>
                     <tr>
 
-                        <td colspan="3" style="font-weight: bold">b) Net Amt. (for ESIC Contribution) Exclud.WA</td>
+                        <td colspan="3" style="font-weight: bold">b) Net Amt. (for ESIC Contribution) Exclud. <i>WA</i></td>
                         <td style="text-align: right; font-weight: bold;"><b>${qs('gross').textContent.replace(/[₹,]/g, '')}</td>
                     </tr>
                     <tr>
@@ -739,10 +740,10 @@ table {
                         <td style="text-align: right; font-weight: bold;"><b>${qs('gross').textContent.replace(/[₹,]/g, '')}</td>
                     </tr>
                     <tr>
-                        <td colspan="4" style="text-align: center;font-weight: bold"><u>Debuction:-</u></td>
+                        <td colspan="4" style="text-align: center;font-weight: bold"><u>Deduction:-</u></td>
                     </tr>
                     <tr>
-                        <td colspan="3">1. PF(<b>Net Amt. SI. No. a</b>) x 12% </td>
+                        <td colspan="3">1. PF(<b><i>Net Amt. SI. No. a</i></b>) x 12% </td>
                         <td>${qs('epfo').textContent.replace(/[₹,]/g, '')}</td>
                     </tr>
                     <tr>
@@ -757,7 +758,7 @@ table {
                     </tr>
                     <tr>
 
-                        <td colspan="3" style="text-align: right;font-weight: bold">Total Debuction Amount </td>
+                        <td colspan="3" style="text-align: right;font-weight: bold"><i>Total Deduction Amount</i> </td>
                         <td style="font-weight: bold;">${(
       Number(qs('epfo').textContent.replace(/[₹,]/g, '')) +
       Number(qs('esic').textContent.replace(/[₹,]/g, '')) +
@@ -766,13 +767,13 @@ table {
                     </tr>
                     <tr>
 
-                        <td colspan="3" style="text-align: right;font-weight: bold">Labour Welfare Fund Debuction
+                        <td colspan="3" style="text-align: right;font-weight: bold"><i>Labour Welfare Fund Deduction</i>
                         </td>
                         <td style="font-weight: bold;">0.00</td>
                     </tr>
                     <tr>
 
-                        <td colspan="3" style="text-align: right;font-weight: bold">Adjust Advance </td>
+                        <td colspan="3" style="text-align: right;font-weight: bold"><i>Adjust Advance</i> </td>
                         <td style="font-weight: bold;">0.00</td>
                     </tr>
                     <tr>
@@ -798,7 +799,7 @@ table {
 
                 </table>
                 <div class="note">
-                    * Rate as per WB Minimum wages
+                    <i>* Rate as per WB Minimum wages</i>
                 </div>
                 <div class="signature">
                     Initial of Contractor or his representatives<br><br><br><br>
