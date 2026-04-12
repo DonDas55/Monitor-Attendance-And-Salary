@@ -634,7 +634,7 @@ table {
         <div class="header">
             <b><u>WAGES SLIP</u></b><br>
             FORM-XIX [See Rule 78(1)(b)]<BR>
-            WAGES SLIP FOR THE MONTH OF <b>${monthText}</b><BR>
+            WAGES SLIP FOR THE MONTH OF<b>${monthText}'${currentYear}</b><br><BR>
             <b>industrial enterprise</b><br>
             Durgachak,Haldia,Purba Midnipur,721602<br>
             (Chloride Metals Ltd Site)
