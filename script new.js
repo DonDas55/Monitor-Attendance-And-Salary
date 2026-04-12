@@ -130,7 +130,119 @@ async function restoreFromGoogleSheet() {
   const url =
     `${GOOGLE_WEBAPP_URL}?action=get&workerId=${workerId}&year=${year}&month=${month}`;
 
-  try {
+ /* =====================================================
+
+   SALARY CALCULATION
+
+===================================================== */
+
+function calcSalary() {
+
+
+
+  const workRate = Number(qs("workRate").value) || 0;
+
+
+
+  qs("festivalRate").value = workRate;
+
+  qs("otRate").value = (workRate / 4).toFixed(2);
+
+
+
+  const workDays = Number(qs("workDays").value) || 0;
+
+  const festDays = Number(qs("festivalDays").value) || 0;
+
+  const festRate = Number(qs("festivalRate").value) || 0;
+
+
+
+  const otHours = Number(qs("otHours").value) || 0;
+
+  const otRate = Number(qs("otRate").value) || 0;
+
+
+
+  const basic = workDays * workRate;
+
+  const fest = festDays * festRate;
+
+
+
+  const hra = (basic + fest) * 0.05;
+
+  const ot = otHours * otRate;
+
+
+
+  // ✅ Rounding Gross Amount
+
+  const gross = Math.round(basic + fest + hra + ot);
+
+
+
+  // ✅ Rounding PF (EPFO)
+
+  const epfo = Math.round((basic + fest) * 0.12);
+
+  
+
+  // ✅ Rounding ESI (ESIC)
+
+  const esic = Math.round(gross * 0.0075);
+
+
+
+  const tax = gross > 15000 ? 130 : 110;
+
+
+
+  // ✅ Net Calculation based on rounded figures
+
+  const net = Math.round(gross - epfo - esic - tax);
+
+
+
+  qs("basic").textContent = fm.format(basic);
+
+  qs("festival").textContent = fm.format(fest);
+
+  qs("hra").textContent = fm.format(hra);
+
+  qs("overtime").textContent = fm.format(ot);
+
+
+
+  qs("gross").textContent = fm.format(gross);
+
+  qs("epfo").textContent = fm.format(epfo);
+
+  qs("esic").textContent = fm.format(esic);
+
+  qs("net").textContent = fm.format(net);
+
+
+
+  qs("taxFixed").value = tax;
+
+
+
+  localStorage.setItem(
+
+    `net-${WORKER_ID}-${currentYear}-${currentMonth}`,
+
+    JSON.stringify({ net })
+
+  );
+
+
+
+  qs("bonus").textContent = fm.format(getFYBonus());
+
+}
+
+   try {
 
     const res = await fetch(url);
     const data = await res.json();
@@ -155,64 +267,14 @@ async function restoreFromGoogleSheet() {
   }
 }
 
-/* =====================================================
-   SALARY CALCULATION
-===================================================== */
-function calcSalary() {
 
-  const workRate = Number(qs("workRate").value) || 0;
-
-  qs("festivalRate").value = workRate;
-  qs("otRate").value = (workRate / 4).toFixed(2);
-
-  const workDays = Number(qs("workDays").value) || 0;
-  const festDays = Number(qs("festivalDays").value) || 0;
-  const festRate = Number(qs("festivalRate").value) || 0;
-
-  const otHours = Number(qs("otHours").value) || 0;
-  const otRate = Number(qs("otRate").value) || 0;
-
-  const basic = workDays * workRate;
-  const fest = festDays * festRate;
-
-  const hra = (basic + fest) * 0.05;
-  const ot = otHours * otRate;
-
-  const gross = basic + fest + hra + ot;
-
-  const epfo = (basic + fest) * 0.12;
-  const esic = gross * 0.0075;
-
-  const tax = gross > 15000 ? 130 : 110;
-
-  const net = gross - epfo - esic - tax;
-
-  qs("basic").textContent = fm.format(basic);
-  qs("festival").textContent = fm.format(fest);
-  qs("hra").textContent = fm.format(hra);
-  qs("overtime").textContent = fm.format(ot);
-
-  qs("gross").textContent = fm.format(gross);
-  qs("epfo").textContent = fm.format(epfo);
-  qs("esic").textContent = fm.format(esic);
-  qs("net").textContent = fm.format(net);
-
-  qs("taxFixed").value = tax;
-
-  localStorage.setItem(
-    `net-${WORKER_ID}-${currentYear}-${currentMonth}`,
-    JSON.stringify({ net })
-  );
-
-  qs("bonus").textContent = fm.format(getFYBonus());
-}
 
 /* =====================================================
    INCREMENT RATE SYSTEM
 ===================================================== */
 function getCurrentRate() {
 
-  let rate = 437;
+  let rate = 481;
 
   INCREMENTS.forEach(inc => {
 
@@ -641,7 +703,7 @@ table {
                 </TR>
                 <TR>
                     <TD>DESIGNATION:-</TD>
-                    <TD style="font-weight: bold;">Semi-Skilled</TD>
+                    <TD style="font-weight: bold;">Q.A</TD>
                     <TD>SERIAL NO:-</TD>
                     <TD style="width: 27%; font-weight: bold;">${0 + Number(WORKER_ID)}</TD>
 
