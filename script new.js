@@ -766,7 +766,7 @@ table {
                     </tr>
                     <tr>
 
-                        <td colspan="3" style="text-align: right;font-weight: bold">Labour Welfare Fund Debuctio
+                        <td colspan="3" style="text-align: right;font-weight: bold">Labour Welfare Fund Debuction
                         </td>
                         <td style="font-weight: bold;">0.00</td>
                     </tr>
