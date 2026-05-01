@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payroll Portal - Login</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); width: 100%; max-width: 360px; text-align: center; }
+        h2 { color: #1c1e21; margin-bottom: 8px; }
+        p { color: #606770; font-size: 14px; margin-bottom: 24px; }
+        input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #dddfe2; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
+        input:focus { border-color: #1877f2; outline: none; box-shadow: 0 0 0 2px #e7f3ff; }
+        button { width: 100%; padding: 12px; background: #1877f2; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 16px; }
+        button:hover { background: #166fe5; }
+        .error { color: #fa3e3e; font-size: 13px; margin-top: 12px; min-height: 18px; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2>Welcome Back</h2>
+        <p>Enter your ID and Password to continue</p>
+        <input type="text" id="userId" placeholder="Worker ID or 'admin'" autofocus>
+        <input type="password" id="userPass" placeholder="Password">
+        <button onclick="attemptLogin()">Login</button>
+        <div id="errorMsg" class="error"></div>
+    </div>
+
+    <script>
+        function attemptLogin() {
+            const id = document.getElementById('userId').value.trim().toLowerCase();
+            const pass = document.getElementById('userPass').value.trim();
+            const err = document.getElementById('errorMsg');
+
+            if ((id === "admin" && pass === "admin123") || (id >= 1 && id <= 7 && pass === "pass" + id)) {
+                sessionStorage.setItem('loggedInWorkerId', id);
+                window.location.href = 'Home.html';
+            } else {
+                err.innerText = "Invalid ID or Password. Try again.";
+            }
+        }
+    </script>
+</body>
+</html>
