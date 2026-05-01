@@ -1,6 +1,14 @@
 // --- 1. SESSION PROTECTION ---
-const loggedInId = sessionStorage.getItem('loggedInWorkerId');
-if (!loggedInId) { window.location.href = 'index.html'; }
+function checkSession() {
+    const id = sessionStorage.getItem('loggedInWorkerId');
+    if (!id) { window.location.replace('index.html'); }
+    return id;
+}
+const loggedInId = checkSession();
+
+window.addEventListener('pageshow', function(event) {
+    checkSession();
+});
 
 // --- 2. CONFIGURATION ---
 let currentDate = new Date();
@@ -293,7 +301,7 @@ async function saveToSheet() {
     try {
         await fetch(SHEET_ENDPOINT, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
         showStatus("✅ Saved & Session Ended", "toast-success");
-        setTimeout(() => { sessionStorage.clear(); window.location.href = 'index.html'; }, 2000);
+        setTimeout(() => { sessionStorage.clear(); window.location.replace('index.html'); }, 2000);
     } catch (err) {
         showStatus("❌ Failed to Save", "toast-error");
         btn.disabled = false; btn.innerText = "Retry Save";
