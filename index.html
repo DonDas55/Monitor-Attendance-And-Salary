@@ -26,6 +26,17 @@
     </div>
 
     <script>
+        // If already logged in, go straight to Home
+        if (sessionStorage.getItem('loggedInWorkerId')) {
+            window.location.replace('Home.html');
+        }
+
+        window.addEventListener('pageshow', function(event) {
+            if (sessionStorage.getItem('loggedInWorkerId')) {
+                window.location.replace('Home.html');
+            }
+        });
+
         function attemptLogin() {
             const id = document.getElementById('userId').value.trim().toLowerCase();
             const pass = document.getElementById('userPass').value.trim();
@@ -33,7 +44,7 @@
 
             if ((id === "admin" && pass === "admin123") || (id >= 1 && id <= 7 && pass === "pass" + id)) {
                 sessionStorage.setItem('loggedInWorkerId', id);
-                window.location.href = 'Home.html';
+                window.location.replace('Home.html');
             } else {
                 err.innerText = "Invalid ID or Password. Try again.";
             }
