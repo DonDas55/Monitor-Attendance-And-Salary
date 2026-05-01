@@ -1,0 +1,370 @@
+/* --- Global Styles --- */
+
+
+body {
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(to right, #bebebe, #c2bebe);
+  color: white;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* --- Worker Selection Card --- */
+.worker-card {
+  background: linear-gradient(to right, #f0acf7, #acf7f0, #f7f0ac);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 950px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 15px;
+  box-sizing: border-box;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+select {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  /* Acts as the "gap" for the gradient */
+  border-radius: 15px;
+  background:
+    linear-gradient(white, white) padding-box,
+    /* Inner color */
+    linear-gradient(to right, #240b36, #c31432) border-box;
+  /* Border gradient */
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  font-size: 1rem;
+
+  background-color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* --- Container & Card Layout --- */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+  max-width: 1000px;
+  justify-content: center;
+}
+
+.card {
+  background: linear-gradient(to right, #1cb5e0, #000046);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 350px;
+}
+
+/* --- Salary Form & Inputs --- */
+.field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.field label {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.field input {
+  width: 100px;
+  padding: 8px;
+  border: 2px solid;
+  border-image-source: linear-gradient(to right, #240b36, #c31432);
+  border-image-slice: 1;
+  /* Required for the gradient to show correctly */
+  border-radius: 6px;
+  text-align: right;
+  font-weight: 600;
+}
+
+/* --- Results Section --- */
+.result {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px dashed red;
+
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.big {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+#net {
+  color: var(--accent-green);
+  font-size: 1.2rem;
+}
+
+#bonus {
+  color: var(--primary-color);
+}
+
+/* --- Calendar Styles --- */
+.attendance-count {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.calendar-header button {
+  background: blue;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: yellowgreen;
+  margin-bottom: 10px;
+}
+
+.calendar-dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-dates div {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+  border: 1px solid transparent;
+}
+
+.btn-sheet {
+  min-width: 150px;
+  padding: 0 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: none;
+  color: #dcfce7;
+  background: #262626;
+  background: linear-gradient(184deg, rgba(38, 38, 38, 1) 42%, rgba(133, 30, 80, 1) 81%);
+  border: 1px solid yellow;
+  font-size: 15px;
+  box-shadow: 0 14px 16px -1px rgba(0, 0, 0, 0.65);
+}
+
+.pdf-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.btn-sheet:hover {
+  color: rgba(228, 250, 31, 0.856);
+  box-shadow: 0 14px 16px -1px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+
+}
+
+.calendar-dates div:hover {
+  background-color: var(--bg-color);
+  border-color: var(--primary-color);
+}
+
+/* State Classes (To be toggled via JS) */
+.present {
+  background-color: #dcfce7 !important;
+  color: #166534 !important;
+  font-weight: bold;
+}
+
+.absent {
+  background-color: #fee2e2 !important;
+  color: #991b1b !important;
+}
+
+/* Styling for specific day types */
+.off-day {
+  color: #ef4444 !important;
+  /* Red text */
+  font-weight: bold !important;
+}
+
+.holiday-marker {
+  border: 2px solid #f97316 !important;
+  /* Orange border */
+  color: #f97316 !important;
+}
+
+.holiday-selected {
+  background-color: #ffedd5 !important;
+  /* Light orange fill when clicked */
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .card {
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .worker-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .button-group {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .pdf-buttons {
+    width: 100%;
+  }
+}
+
+#calendarDates div.present {
+  background-color: #dcfce7 !important;
+  /* Light green */
+  color: #166534 !important;
+  /* Dark green text */
+  border-radius: 50% !important;
+  /* Makes it a circle */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Toast Popup Styles */
+.toast-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: sans-serif;
+  z-index: 1000;
+  display: none;
+  /* Hidden by default */
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Success/Error colors */
+.toast-success {
+  background: #000000;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0f9b0f, #000000);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0f9b0f, #000000);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.toast-error {
+  background: #333333;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #dd1818, #333333);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #dd1818, #333333);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.toast-sync {
+  background: #003d4d;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #00c996, #003d4d);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #00c996, #003d4d);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.toast-No_records_found {
+  background: #051937;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #a8eb12, #00bf72, #008793, #004d7a, #051937);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #a8eb12, #00bf72, #008793, #004d7a, #051937);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
