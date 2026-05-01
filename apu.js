@@ -293,7 +293,7 @@ async function saveToSheet() {
     try {
         await fetch(SHEET_ENDPOINT, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload) });
         showStatus("✅ Saved & Session Ended", "toast-success");
-        setTimeout(() => { sessionStorage.clear(); window.location.href = 'login.html'; }, 2000);
+        setTimeout(() => { sessionStorage.clear(); window.location.href = 'index.html'; }, 2000);
     } catch (err) {
         showStatus("❌ Failed to Save", "toast-error");
         btn.disabled = false; btn.innerText = "Retry Save";
